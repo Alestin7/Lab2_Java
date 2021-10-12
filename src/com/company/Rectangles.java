@@ -23,8 +23,24 @@ public class Rectangles {
         }
     }
 
+    public void findMediumSquare(){
+        double medsquare = 0;
+        int N = 0;
+        for (Rectangle rectangle : this.rectangles){
+            medsquare += rectangle.getA()*rectangle.getB();
+        }
+        medsquare /= rectangles.size();
+        System.out.println("\nСредняя площадь прямоугольников: " + medsquare);
+        for (Rectangle rectangle : this.rectangles){
+            if (rectangle.getA() * rectangle.getB()>medsquare){
+                N++;
+            }
+        }
+        System.out.println("\nКоличество прямоугольников, площадь которых больше, чем средняя: " + N);
+    }
+
     @Override
     public String toString() {
-        return "Rectangles" + rectangles + "; ";
+        return "Прямоугольники" + rectangles + "; ";
     }
 }

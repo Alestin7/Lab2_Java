@@ -34,9 +34,12 @@ public class Rectangle {
 
     @Override
     public String toString() {
-        return "\n\nRectangle{\n" +
+        return "\n\nПрямоугольник{\n" +
                 "a: " + a +
                 "\nb: " + b +
+                "\nДиагональ: " + Math.sqrt((Math.pow(a, 2)+Math.pow(b, 2))) +
+                "\nПериметр: " + 2 * (a + b) +
+                "\nПлощадь: " + a * b +
                 "\n}";
     }
 }

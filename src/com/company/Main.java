@@ -11,7 +11,11 @@ public class Main {
         Rectangles rectangles = new Rectangles();
         rectangles.fillRandom(n);
         System.out.println(rectangles);
+        rectangles.findMediumSquare();
 
-        
+        Parals parals = new Parals();
+        parals.fillRandom(n);
+        System.out.println(parals);
+        parals.Cube();
     }
 }
