@@ -23,20 +23,23 @@ public class Rectangles {
         }
     }
 
-    public void findMediumSquare(){
+    public double findMediumSquare(){
         double medsquare = 0;
-        int N = 0;
         for (Rectangle rectangle : this.rectangles){
             medsquare += rectangle.getA()*rectangle.getB();
         }
         medsquare /= rectangles.size();
-        System.out.println("\nСредняя площадь прямоугольников: " + medsquare);
+        return medsquare;
+    }
+
+    public int findQuantity(double medsquare){
+        int N = 0;
         for (Rectangle rectangle : this.rectangles){
             if (rectangle.getA() * rectangle.getB()>medsquare){
                 N++;
             }
         }
-        System.out.println("\nКоличество прямоугольников, площадь которых больше, чем средняя: " + N);
+        return N;
     }
 
     @Override

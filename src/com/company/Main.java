@@ -7,15 +7,17 @@ public class Main {
     public static Random r = new Random();
 
     public static void main(String[] args) {
-        int n = r.nextInt(5)+1;
+        int n = r.nextInt(5) + 1;
         Rectangles rectangles = new Rectangles();
         rectangles.fillRandom(n);
         System.out.println(rectangles);
-        rectangles.findMediumSquare();
+        double mediumSquare = rectangles.findMediumSquare();
+        System.out.println("\nСредняя площадь прямоугольников: " + mediumSquare);
+        System.out.println("\nКоличество прямоугольников, площадь которых больше, чем средняя: " + rectangles.findQuantity(mediumSquare));
 
-        Parals parals = new Parals();
-        parals.fillRandom(n);
-        System.out.println(parals);
-        parals.Cube();
+        Parallelepipeds parallelepipeds = new Parallelepipeds();
+        parallelepipeds.fillRandom(n);
+        System.out.println(parallelepipeds);
+        System.out.println("\nКоличество кубов: " + parallelepipeds.getCubesQuantity());
     }
 }

@@ -2,10 +2,10 @@ package com.company;
 
 import java.util.Random;
 
-public class Paral extends Rectangle {
+public class Parallelepiped extends Rectangle {
     private int c;
 
-    public Paral(int a, int b, int c) {
+    public Parallelepiped(int a, int b, int c) {
         super(a, b);
         this.c = c;
     }
@@ -18,9 +18,9 @@ public class Paral extends Rectangle {
         this.c = c;
     }
 
-    public static Paral generate(){
+    public static Parallelepiped generate(){
         Random r = new Random();
-        return new Paral(r.nextInt(2)+1, r.nextInt(2)+1, r.nextInt(2)+1);
+        return new Parallelepiped(r.nextInt(2)+1, r.nextInt(2)+1, r.nextInt(2)+1);
     }
 
     @Override
