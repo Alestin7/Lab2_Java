@@ -1,5 +1,10 @@
 package com.company;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONReader;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +93,7 @@ public class Rectangles {
                 } else
                     break;
             } while (scanner.hasNextLine());
+            scanner.close();
         } catch (IOException e) {
             e.printStackTrace();
             return false;
@@ -95,13 +101,13 @@ public class Rectangles {
         return true;
     }
 
-    public boolean serialize(String filename){
+    public boolean serializeFastJSON(String filename){
         try {
-            FileOutputStream fileOut = new FileOutputStream(filename);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(rectangles);
-            out.close();
-            fileOut.close();
+            FileWriter outStream = new FileWriter(filename);
+            BufferedWriter bw = new BufferedWriter(outStream);
+            bw.write(JSON.toJSONString(rectangles));
+            bw.close();
+            outStream.close();
         }
         catch (IOException e){
             e.printStackTrace();
@@ -110,21 +116,20 @@ public class Rectangles {
         return true;
     }
 
-    public boolean deserialize(String filename){
-        rectangles.clear();
+    public boolean deserializeFastJSON(String filename){
         try {
-            FileInputStream fileIn = new FileInputStream(filename);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            rectangles = (List) in.readObject();
-            in.close();
-            fileIn.close();
+            Scanner scanner = new Scanner(new FileReader(filename));
+
+            rectangles.clear();
+
+            List<JSONObject> JSONList = JSON.parseObject(filename, List.class);
+            for (JSONObject st : JSONList){
+                rectangles.add(new Rectangle(st.getIntValue("a"), st.getIntValue("b")));
+            }
+            scanner.close();
         }
         catch (IOException e){
             e.printStackTrace();
-            return false;
-        }
-        catch (ClassNotFoundException c){
-            c.printStackTrace();
             return false;
         }
         return true;
