@@ -4,33 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Parallelepipeds {
-    private final List<Parallelepiped> parals;
+    private final List<Parallelepiped> parallelepipeds;
 
     public Parallelepipeds() {
-        parals = new ArrayList<>();
+        parallelepipeds = new ArrayList<>();
     }
 
-    public List<Parallelepiped> getParals() {
-        return parals;
+    public List<Parallelepiped> getParallelepipeds() {
+        return parallelepipeds;
     }
 
     public void add(Parallelepiped paral) {
-        this.parals.add(paral);
+        this.parallelepipeds.add(paral);
     }
 
     public void remove(Parallelepiped paral) {
-        this.parals.remove(paral);
+        this.parallelepipeds.remove(paral);
     }
 
     public void fillRandom(int n){
         for (int i = 0; i < n; i++) {
-            parals.add(Parallelepiped.generate());
+            parallelepipeds.add(Parallelepiped.generate());
         }
     }
 
     public int getCubesQuantity(){
         int N = 0;
-        for (Parallelepiped paral : this.parals){
+        for (Parallelepiped paral : this.parallelepipeds){
             if (paral.getA() == paral.getB() && paral.getA() == paral.getC()){
                 N++;
             }
@@ -40,6 +40,6 @@ public class Parallelepipeds {
 
     @Override
     public String toString() {
-        return "\n\n\nПараллелипипеды" + parals + "; ";
+        return "\n\n\nПараллелипипеды" + parallelepipeds + "; ";
     }
 }
